@@ -1,0 +1,26 @@
+import mysql.connector
+import pymysql
+host="your_info"
+password="your_info"
+user="your_info"
+database="movies"
+conn = mysql.connector.connect(
+host="localhost",
+password = "19122003",
+user = "root",
+database = "movies"
+)
+if conn.is_connected():
+print("database connected")
+cursor = conn.cursor()
+create_table = """
+CREATE TABLE IF NOT EXISTS GENRE (
+GenreID INT(30),
+Genre_Name VARCHAR(50)
+)
+"""
+cursor.execute(create_table)
+conn.commit()
+print("table created")
+cursor.close()
+conn.close()
