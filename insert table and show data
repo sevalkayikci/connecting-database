@@ -1,0 +1,34 @@
+import mysql.connector
+import pymysql
+host="your_info"
+password="your_info"
+user="your_info"
+database="movies"
+conn = mysql.connector.connect(
+host="localhost",
+password = "19122003",
+user = "root",
+database = "movies"
+)
+if conn.is_connected():
+print("database connected")
+cursor = conn.cursor()
+#insertion
+insert_data = """
+INSERT INTO GENRE(GenreID, Genre_Name) VALUES (%s, %s)
+"""
+data = (10000, "Drama")
+cursor.execute(insert_data, data)
+conn.commit()
+print("data inserted")
+#display
+select_data = """
+SELECT * FROM GENRE
+"""
+cursor.execute(select_data)
+rows = cursor.fetchall()
+print("data of the table:")
+for row in rows:
+print(row)
+cursor.close()
+conn.close()
