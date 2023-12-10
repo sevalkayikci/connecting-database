@@ -1,0 +1,10 @@
+import mysql.connector
+import pymysql
+conn = pymysql.connect(host='your_info',
+password='your_info',
+user='your_info')
+cursor = conn.cursor()
+cursor.execute("CREATE DATABASE movies")
+conn.commit()
+cursor.close()
+conn.close()
